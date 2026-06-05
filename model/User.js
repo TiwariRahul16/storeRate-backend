@@ -33,18 +33,6 @@ const User = sequelize.define(
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notNull: { msg: "Password is required" },
-                // custom validator: 8-16 chars, 1 uppercase, 1 special char
-                isValidPassword(value) {
-                    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,16}$/;
-                    if (!regex.test(value)) {
-                        throw new Error(
-                            "Password must be 8-16 characters with at least one uppercase letter and one special character"
-                        );
-                    }
-                },
-            },
         },
         address: {
             type: DataTypes.STRING(400),
